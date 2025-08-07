@@ -1,0 +1,66 @@
+.bg-white {
+    background-color: white;
+}
+
+.cardAssignedTo {
+    color: #ffffff;
+    background-color: #40e0d0;
+    border-radius: 5px;
+}
+
+.cardAttachementNr {
+    color: #ffffff;
+    background-color: #808080;
+    border-radius: 5px;
+}
+
+.btn-check {
+    color:#198754;
+    border-style: solid;
+    border-color: #198754;
+    border-radius: 5px;
+}
+
+.btn-edit-card {
+    color:#0d6efd;
+    border-style: solid;
+    border-color: #0d6efd;
+    border-radius: 5px;
+}
+
+.btn-remove-card {
+    color:#dc3545;
+    border-style: solid;
+    border-color: #dc3545;
+    border-radius: 5px;
+}
+.btn-sort-cards {
+    color:rgb(128, 128, 128);
+    border-style: solid;
+    border-color:gray;
+    border-radius: 5px;
+}
+
+.btn-show-cards {
+    color:gray;
+    border-style: solid;
+    border-color:gray;
+    border-radius: 5px;
+}
+
+.btn-toolbar {
+    color: #808080;
+    font-size: 1em;
+}
+
+.icon-check {
+    color:#198754;
+}
+
+.icon-edit {
+    color:#0d6efd;
+}
+
+.icon-remove {
+    color:#dc3545;
+}
