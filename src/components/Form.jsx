@@ -64,6 +64,9 @@ const Form = (props) => {
     }
 
 
+    // Used to set the min date that can be choosen in the date input.
+    const todayStr = new Date().toISOString().split("T")[0];
+
     // Should titles and person options come from arrays?
 
     return (
@@ -80,7 +83,7 @@ const Form = (props) => {
                 <div className="row">
                     <div className="mb-3 col-sm-6">
                         <label className="form-label" lang="en-GB">Due Date</label>
-                        <input type="date" className="form-control" id="dueDate" name="dueDate" value={dueDate} onChange={changeDueDate}/>
+                        <input type="date" className="form-control" id="dueDate" name="dueDate" min={todayStr} value={dueDate} onChange={changeDueDate}/>
                     </div>
                     <div className="mb-3 col-sm-6">
                         <label className="form-label">Assign to Person (Optional)</label>
