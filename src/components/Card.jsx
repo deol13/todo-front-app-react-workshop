@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import './Card.css'
 import jsonData from './data/data.json'
+import Form from './Form'
 
-
-const IndividualCards = () => {
+const Card = () => {
+    // In react it's the array of files in todoData is named FileList not files as in JS
     const [todoData, setTodoData] = useState(jsonData);
 
-    const card = todoData.map((info) => {
+    const cards = todoData.map((info) => {
         return (
             <div className="card-body" id="${divID}">
             <div className="border border-1 rounded">
@@ -71,15 +72,18 @@ const IndividualCards = () => {
         );
     });
 
+    const addCards = (data) => {
+        const totalTodos = todoData.length;
+        data.id = totalTodos + 1;
+        const updatedTodoData = [...todoData];
+        updatedTodoData.push(data);
+        setTodoData(updatedTodoData);
+    }
+
+
     return (
         <>
-        {card}
-        </>
-    );
-};
-
-const Card = () => {
-    return (
+        <Form func={addCards}/>
         <div className="container mt-3 card" id="cardDiv">
             <div className="card-header bg-white">
                 
@@ -99,8 +103,9 @@ const Card = () => {
                     </div>
                 </div>
             </div>
-            <IndividualCards/>
+            {cards}
         </div>
+        </>
     );
 };
 

@@ -11,7 +11,7 @@ function App() {
     <>
     <div className="container mt-3 pt-4 ps-4 pe-4 pb-2 text-bg-light">
       <Header/>
-      <Form/>
+      
       <Card/>
     </div>
     </>
