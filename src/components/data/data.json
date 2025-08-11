@@ -1,5 +1,5 @@
 [
-    {"title": "Example1", "description": "Description of example1", "dueDate": "2025-08-15", "assignToPerson": "Dennis Olsen", "attachments": [], "created": "2025-07-29"},
-    {"title": "Example2", "description": "Description of example2", "dueDate": "2025-08-18", "assignToPerson": "Johan Karlsson", "attachments": ["exampleFile"], "created": "2025-07-29"}
+    {"id": 0, "title": "Example1", "description": "Description of example1", "dueDate": "2025-08-15", "assignToPerson": "Dennis Olsen", "attachments": [], "created": "2025-07-29"},
+    {"id": 1, "title": "Example2", "description": "Description of example2", "dueDate": "2025-08-18", "assignToPerson": "Johan Karlsson", "attachments": ["exampleFile"], "created": "2025-07-29"}
 ]
 

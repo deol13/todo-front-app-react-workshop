@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
-import './Form.css'
+import './TodoForm.css'
 
-const Form = (props) => {
+
+
+
+const TodoForm = (props) => {
     // Sets up variables and their set methods.
     const [title, setTile] = useState('');
     const [description, setDescription] = useState('');
@@ -10,7 +13,6 @@ const Form = (props) => {
     const [attachments, setAttachments] = useState('');
 
     const [errors, setErrors] = useState({});
-
 
     // Event listeners, they listen to any changes in title, description, ....
     // Saves the new data to the variables above.
@@ -29,16 +31,6 @@ const Form = (props) => {
     const changeAttachments = (event) => {
         setAttachments(event.target.files);
     };
-    /*
-    // Is it better to handle everything in one?
-     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    };
-    */
 
     // This is called when the submit button is clicked, 
     // it sends all the data to the prop gotten from card which is addRows method that adds a new row with the data.
@@ -114,7 +106,6 @@ const Form = (props) => {
         return dateTime[0];
     }
 
-
     // Used to set the min date that can be choosen in the date input.
     const todayStr = new Date().toISOString().split("T")[0];
 
@@ -176,4 +167,4 @@ const Form = (props) => {
     );
 };
 
-export default Form;
+export default TodoForm;
