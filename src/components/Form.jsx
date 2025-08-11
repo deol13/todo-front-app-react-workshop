@@ -9,6 +9,8 @@ const Form = (props) => {
     const [assignToPerson, setAssignToPerson] = useState('');
     const [attachments, setAttachments] = useState('');
 
+    const [errors, setErrors] = useState({});
+
 
     // Event listeners, they listen to any changes in title, description, ....
     // Saves the new data to the variables above.
@@ -27,27 +29,70 @@ const Form = (props) => {
     const changeAttachments = (event) => {
         setAttachments(event.target.files);
     };
+    /*
+    // Is it better to handle everything in one?
+     const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+    */
 
     // This is called when the submit button is clicked, 
     // it sends all the data to the prop gotten from card which is addRows method that adds a new row with the data.
     // It also clears the variables of any values.
     const transferValue = (event) => {
         event.preventDefault();
-        let cDate = removeTime(new Date().toLocaleString("sv-SE"));
 
-        console.log(attachments);
+        const newErrors = validateForm();
+        setErrors(newErrors);
 
-        const val = {
-            title,
-            description,
-            dueDate,
-            assignToPerson,
-            attachments,
-            cDate,
-        };
-        props.func(val);
-        clearState();
+        if (Object.keys(newErrors).length === 0) {
+            // Form submission logic here
+            console.log('Form submitted successfully!');
+
+            let cDate = removeTime(new Date().toLocaleString("sv-SE"));
+
+            console.log(attachments);
+
+            const val = {
+                title,
+                description,
+                dueDate,
+                assignToPerson,
+                attachments,
+                cDate,
+            };
+            props.func(val);
+            clearState();
+        } else {
+            console.log('Form submission failed due to validation errors.');
+        }
     };
+
+    const validateForm = () => {
+        const errors = {};
+
+        if(!title.trim())  {
+            errors.title = 'Title is required'
+        } else if(title < 10) {
+            errors.title = 'Title must be at least 10 characters long'
+        }
+
+        if(!description.trim()) {
+            errors.description = 'Description is required'
+        } else if(title < 20) {
+            errors.title = 'Description must be at least 20 characters long'
+        }
+
+        if(!dueDate) {
+            errors.dueDate = 'Due date is required'
+        }
+
+        return errors;
+    }
 
     const clearState = () => {
         setTile('');
@@ -75,15 +120,30 @@ const Form = (props) => {
                 <div className="mb-3 mt-3">
                     <label className="form-label">Title</label>
                     <input type="text" className="form-control" id="title" name="title" value={title} onChange={changeTitle}/>
+                    {errors.title && (
+                        <span className="error-message">
+                            {errors.title}
+                        </span>
+                    )}
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Description</label>
                     <textarea className="form-control" rows="3" id="description" name="description" value={description} onChange={changeDescription}></textarea>
+                    {errors.description && (
+                        <span className="error-message">
+                            {errors.description}
+                        </span>
+                    )}
                 </div>
                 <div className="row">
                     <div className="mb-3 col-sm-6">
                         <label className="form-label" lang="en-GB">Due Date</label>
                         <input type="date" className="form-control" id="dueDate" name="dueDate" min={todayStr} value={dueDate} onChange={changeDueDate}/>
+                        {errors.dueDate && (
+                        <span className="error-message">
+                            {errors.dueDate}
+                        </span>
+                    )}
                     </div>
                     <div className="mb-3 col-sm-6">
                         <label className="form-label">Assign to Person (Optional)</label>
