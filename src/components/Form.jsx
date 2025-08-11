@@ -43,6 +43,11 @@ const Form = (props) => {
     // This is called when the submit button is clicked, 
     // it sends all the data to the prop gotten from card which is addRows method that adds a new row with the data.
     // It also clears the variables of any values.
+
+    // It also validates the form and shows error messages if there are any.
+    // It also removes the time from the date string.
+    // It also prevents the default form submission behavior.
+    // It also checks for errors and shows them if there are any.
     const transferValue = (event) => {
         event.preventDefault();
 
@@ -53,9 +58,7 @@ const Form = (props) => {
             // Form submission logic here
             console.log('Form submitted successfully!');
 
-            let cDate = removeTime(new Date().toLocaleString("sv-SE"));
-
-            console.log(attachments);
+            let created = removeTime(new Date().toLocaleString("sv-SE"));
 
             const val = {
                 title,
@@ -63,7 +66,7 @@ const Form = (props) => {
                 dueDate,
                 assignToPerson,
                 attachments,
-                cDate,
+                created,
             };
             props.func(val);
             clearState();
@@ -72,19 +75,21 @@ const Form = (props) => {
         }
     };
 
+    // Validates the form inputs and returns an object with error messages.
+    // If there are no errors, it returns an empty object.
     const validateForm = () => {
         const errors = {};
 
         if(!title.trim())  {
             errors.title = 'Title is required'
-        } else if(title < 10) {
+        } else if(title.length < 10) {
             errors.title = 'Title must be at least 10 characters long'
         }
 
         if(!description.trim()) {
             errors.description = 'Description is required'
-        } else if(title < 20) {
-            errors.title = 'Description must be at least 20 characters long'
+        } else if(description.length < 10) {
+            errors.description = 'Description must be at least 20 characters long'
         }
 
         if(!dueDate) {
@@ -102,8 +107,9 @@ const Form = (props) => {
         setAttachments('');
     };
 
+    // Used to remove time from date string.
+    // It splits the date string at the space and returns only the date part.
     const removeTime = (date) => {
-    // Used to remove time.
         let dateTime = date.split(' ');
         return dateTime[0];
     }

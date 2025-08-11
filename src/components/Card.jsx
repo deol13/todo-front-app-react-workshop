@@ -3,13 +3,31 @@ import './Card.css'
 import jsonData from './data/data.json'
 import Form from './Form'
 
+const todoTestData = [
+    {id: 0, title: "Example1", description: "Description of example1", dueDate: "2025-08-15", assignToPerson: "Dennis Olsen", attachments: [], created: "2025-07-29"},
+    {id: 1, title: "Example2", description: "Description of example2", dueDate: "2025-08-18", assignToPerson: "Johan Karlsson", attachments: ["exampleFile"], created: "2025-07-29"}
+]
+
+
+
 const Card = () => {
     // In react it's the array of files in todoData is named FileList not files as in JS
-    const [todoData, setTodoData] = useState(jsonData);
+    const [todoData, setTodoData] = useState(todoTestData);
 
+    // Function to remove time from date string
+    const removeCard = (id) => {
+        setTodoData(todoData.filter(item => item.id !== id));
+    }
+
+    // Maps through the todoData array and creates a card for each item.
+    // Each card displays the title, description, due date, assigned person, and number of attachments.
+    // It also includes buttons for checking, editing, and removing the card.
+    // The buttons have icons and are styled with Bootstrap classes.
+    // The removeCard function is called when the remove button is clicked, passing the id of
+    // the card to be removed.
     const cards = todoData.map((info) => {
         return (
-            <div className="card-body" id="${divID}">
+            <div className="card-body">
             <div className="border border-1 rounded">
                 <div className="btn-toolbar justify-content-between">
                     <div className="input-group">
@@ -28,7 +46,7 @@ const Card = () => {
                                     <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325"/>
                                 </svg>
                             </button>
-                            <button type="button" className="btn btn-remove-card">
+                            <button type="button" className="btn btn-remove-card" onClick={() => removeCard(info.id)}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-trash icon-remove" viewBox="0 0 16 16">
                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
                                     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
