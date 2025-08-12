@@ -13,10 +13,10 @@ function App() {
     <>
     <div className="container-fluid row page-background">
       <Navbar/>
-      <div className="container-fluid col mt-3 pt-4 ps-4 pe-4 pb-2 form-card-background">
+      <div className="col-md-8 mt-3 pt-4 ps-4 pe-4 pb-2 form-card-background">
         <Header/>
         <TodosBody/>
-    </div>
+      </div>
     </div>
     </>
   )

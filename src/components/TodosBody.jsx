@@ -29,7 +29,6 @@ const TodosBody = () => {
         <TodoForm func={addCards}/>
         <div className="container mt-3 card" id="cardDiv">
             <div className="card-header bg-white">
-                
                 <div className="btn-toolbar justify-content-between" role="toolbar">
                     <h5 className="pt-1">Todos</h5>
                     <div className="btn-group" role="group">
