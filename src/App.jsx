@@ -5,13 +5,15 @@ import Header from './components/Header'
 import Form from './components/TodoForm'
 import TodosBody from './components/TodosBody'
 import Navbar from './components/Navbar'
+import './App.css'
 
 function App() {
 
   return (
     <>
-    <div className="container-fluid row text-bg-light">
-      <div className="container col mt-3 pt-4 ps-4 pe-4 pb-2 text-bg-light">
+    <div className="container-fluid row page-background">
+      <Navbar/>
+      <div className="container-fluid col mt-3 pt-4 ps-4 pe-4 pb-2 form-card-background">
         <Header/>
         <TodosBody/>
     </div>

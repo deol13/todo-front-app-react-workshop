@@ -112,7 +112,7 @@ const TodoForm = (props) => {
     // Should titles and person options come from arrays?
 
     return (
-        <div className="container border rounded bg-white mt-3 clearfix">
+        <div className="container border rounded mt-3 clearfix">
             <form id="addTodoForm">
                 <div className="mb-3 mt-3">
                     <label className="form-label">Title</label>

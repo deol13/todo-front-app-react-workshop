@@ -71,3 +71,12 @@
 .icon-size {
     font-size: 1em;
 }
+
+.card-background {
+    background-color: #EBF2FA;
+    border-radius: 5px;
+}
+
+.card {
+  background-color: #EBF2FA; /* Light blue */
+}

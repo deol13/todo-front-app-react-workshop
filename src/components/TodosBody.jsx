@@ -46,7 +46,8 @@ const TodosBody = () => {
                     </div>
                 </div>
             </div>
-            {todoData && todoData.map((data) => (
+            <div className="card-body">
+                {todoData && todoData.map((data) => (
                     <Todos key={data.id} 
                     id={data.id}
                     title={data.title}
@@ -58,6 +59,8 @@ const TodosBody = () => {
                     removeFunc={() => removeCard(data.id)} 
                     />
             ))}
+            </div>
+            
         </div>
         </>
     );

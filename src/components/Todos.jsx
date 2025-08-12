@@ -10,8 +10,7 @@ const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments,
     // The removeCard function is called when the remove button is clicked, passing the id of
     // the card to be removed.
     return (
-        <div className="card-body">
-        <div className="border border-1 rounded">
+        <div className="border border-1 rounded card-background">
             <div className="btn-toolbar justify-content-between">
                 <div className="input-group">
                     <h6 className="card-title pt-2 ps-3">{title}</h6>
@@ -54,8 +53,7 @@ const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments,
                     </p>
                 </div>
             </div>
-        </div>                  
-    </div>
+        </div>
     );
 };
 
