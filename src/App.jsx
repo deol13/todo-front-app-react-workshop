@@ -10,15 +10,13 @@ import './App.css'
 function App() {
 
   return (
-    <>
-    <div className="container-fluid row page-background">
+    <div className="container-fluid row page-background mh-100">
       <Navbar/>
       <div className="col-md-8 mt-3 pt-4 ps-4 pe-4 pb-2 form-card-background">
         <Header/>
         <TodosBody/>
       </div>
     </div>
-    </>
   )
 }
 
