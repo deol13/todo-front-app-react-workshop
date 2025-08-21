@@ -1,7 +1,15 @@
 import React, {useState} from 'react';
 import './Todos.css'
 
-const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments, created, removeFunc}) => {
+const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments, created, status, removeFunc, changeStatusFunc}) => {
+    let statusColorClass = "";
+    if(status === "ongoing") 
+        statusColorClass = "status-Ongoing";
+    else if(status === "unbegun")
+        statusColorClass = "status-Unbegun";
+    else if(status === "completed")
+        statusColorClass = "status-Completed";
+    
 
     // Maps through the todoData array and creates a card for each item.
     // Each card displays the title, description, due date, assigned person, and number of attachments.
@@ -27,6 +35,9 @@ const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments,
                         <button type="button" className="btn btn-remove-card" onClick={removeFunc}>
                             <i className="bi bi-trash icon-remove"></i>
                         </button>
+                        <button type="button" className="btn btn-change-status" onClick={changeStatusFunc}>
+                            <i className="bi bi-wrench icon-change-status"></i>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -46,10 +57,16 @@ const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments,
                         {assignToPerson}
                     </p>
                 </div>
-                <div className="input-group">
+                <div className="input-group me-2">
                     <p className="card-text text-center cardAttachementNr ps-1 pe-1">
                         <i className="bi bi-paperclip icon-size"></i>
                         {attachments && (attachments.length)} attachments
+                    </p>
+                </div>
+                <div className="input-group">
+                    <p className={`card-text text-center ${statusColorClass} ps-1 pe-1`}>
+                        <i className="bi bi-wrench icon-size me-1"></i>
+                        {status}
                     </p>
                 </div>
             </div>

@@ -4,9 +4,12 @@ import Todos from './Todos'
 import TodoForm from './TodoForm'
 
 const todoTestData = [
-    {id: 0, title: "Example1", description: "Description of example1", dueDate: "2025-08-15", assignToPerson: "Dennis Olsen", attachments: [], created: "2025-07-29"},
-    {id: 1, title: "Example2", description: "Description of example2", dueDate: "2025-08-18", assignToPerson: "Johan Karlsson", attachments: ["exampleFile"], created: "2025-07-29"}
+    {id: 0, title: "Example1", description: "Description of example1", dueDate: "2025-08-15", assignToPerson: "Dennis Olsen", attachments: [], created: "2025-07-29", status: "ongoing"},
+    {id: 1, title: "Example2", description: "Description of example2", dueDate: "2025-08-18", assignToPerson: "Johan Karlsson", attachments: ["exampleFile"], created: "2025-07-29", status: "unbegun"},
 ]
+// Status array to manage the status of todos
+// This can be used to filter or sort todos based on their status
+const status = [{id: 0, status: "unbegun"}, {id: 1, status: "ongoing"}, {id: 2, status: "completed"}]; 
 
 const TodosBody = () => {
     const [todoData, setTodoData] = useState(todoTestData);
@@ -14,6 +17,7 @@ const TodosBody = () => {
     const addCards = (data) => {
         const totalTodos = todoData.length;
         data.id = totalTodos + 1;
+        data.status = "inactive"; // Default status for new todos
         const updatedTodoData = [...todoData];
         updatedTodoData.push(data);
         setTodoData(updatedTodoData);
@@ -22,6 +26,18 @@ const TodosBody = () => {
     // Function to remove time from date string
     const removeCard = (id) => {
         setTodoData(todoData.filter(item => item.id !== id));
+    }
+
+    const changeStatus = (id) => {
+        setTodoData(todoData.map(item => {
+            if (item.id === id) {
+                // Cycle through status
+                const currentIndex = status.findIndex(s => s.status === item.status);
+                const nextIndex = (currentIndex + 1) % status.length;
+                return {...item, status: status[nextIndex].status};
+            }
+            return item;
+        }));
     }
 
     return (
@@ -55,7 +71,9 @@ const TodosBody = () => {
                     assignToPerson={data.assignToPerson} 
                     attachments={data.attachments} 
                     created={data.created} 
-                    removeFunc={() => removeCard(data.id)} 
+                    status={data.status}
+                    removeFunc={() => removeCard(data.id)}
+                    changeStatusFunc={() => changeStatus(data.id)} 
                     />
             ))}
             </div>

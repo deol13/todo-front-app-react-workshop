@@ -14,6 +14,22 @@
     border-radius: 5px;
 }
 
+.status-Ongoing {
+    color: #ffffff;
+    background-color: #0d6efd ; /* Blue */
+    border-radius: 5px;
+}
+.status-Unbegun {
+    color: #ffffff;
+    background-color: #dc3545; /* Red */
+    border-radius: 5px;
+}
+.status-Completed {
+    color: #ffffff;
+    background-color: #198754; /* Green */
+    border-radius: 5px;
+}
+
 .btn-check-card {
     color:#198754;
     border-style: solid;
@@ -27,20 +43,25 @@
     border-color: #0d6efd;
     border-radius: 5px;
 }
-
 .btn-remove-card {
     color:#dc3545;
     border-style: solid;
     border-color: #dc3545;
     border-radius: 5px;
 }
+.btn-change-status {
+    color:saddlebrown;
+    border-style: solid;
+    border-color:saddlebrown;
+    border-radius: 5px;
+}
+
 .btn-sort-cards {
     color:rgb(128, 128, 128);
     border-style: solid;
     border-color:gray;
     border-radius: 5px;
 }
-
 .btn-show-cards {
     color:gray;
     border-style: solid;
@@ -65,6 +86,11 @@
 
 .icon-remove {
     color:#dc3545;
+    font-size: 1em;
+}
+
+.icon-change-status {
+    color:saddlebrown;
     font-size: 1em;
 }
 
