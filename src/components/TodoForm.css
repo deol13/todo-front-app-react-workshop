@@ -13,6 +13,9 @@
   margin-bottom: 10px;
 }
 
-.container {
-  background-color: #EBF2FA; /* Light blue */
+.background-color-light {
+  background-color: #606C38;
+}
+.background-color-dark {
+  background-color: #ebf2fa3f
 }

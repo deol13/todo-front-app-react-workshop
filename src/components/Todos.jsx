@@ -1,7 +1,10 @@
 import React, {useState} from 'react';
 import './Todos.css'
+import { useTheme } from './ThemeContxt';
 
 const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments, created, status, removeFunc, changeStatusFunc}) => {
+    const { theme } = useTheme();
+
     let statusColorClass = "";
     if(status === "ongoing") 
         statusColorClass = "status-Ongoing";
@@ -18,7 +21,7 @@ const TodoCard = ({id, title, description, dueDate, assignToPerson, attachments,
     // The removeCard function is called when the remove button is clicked, passing the id of
     // the card to be removed.
     return (
-        <div className="border border-1 rounded card-background">
+        <div className={`border border-1 rounded card-background-${theme} mb-3`} id="todoCard">
             <div className="btn-toolbar justify-content-between">
                 <div className="input-group">
                     <h6 className="card-title pt-2 ps-3">{title}</h6>

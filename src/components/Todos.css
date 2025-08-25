@@ -98,11 +98,11 @@
     font-size: 1em;
 }
 
-.card-background {
-    background-color: #EBF2FA;
+.card-background-light {
+    background-color: #FEFAE0;
     border-radius: 5px;
 }
-
-.card {
-  background-color: #EBF2FA; /* Light blue */
+.card-background-dark {
+    background-color: #EBF2FA;
+    border-radius: 5px;
 }

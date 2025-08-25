@@ -1,3 +1,21 @@
 .nav-text {
-  color: #EBF2FA;
+  color: black;
+}
+
+.navbar-custom-light {
+  background-color: #606C38;
+}
+.navbar-custom-dark {
+  background-color: #427AA1;
+}
+
+/* Modify navlink and text color */
+.navbar-custom-light .nav-link
+{
+    color: black;
+}
+
+.navbar-custom-dark .nav-link
+{
+    color: white;
 }

@@ -1,11 +1,12 @@
 import React, {useState} from 'react'
 import './TodoForm.css'
 import { useForm } from "react-hook-form";
-
+import { useTheme } from './ThemeContxt';
 
 
 
 const TodoForm = (props) => {
+    const { theme } = useTheme();
     // Used to set the min date that can be choosen in the date input.
     const todayStr = new Date().toISOString().split("T")[0];
 
@@ -46,7 +47,7 @@ const TodoForm = (props) => {
     }
 
     return (
-        <div className="container border rounded mt-3 clearfix" onSubmit={handleSubmit(onSubmit)}>
+        <div className={`container pt-1 mt-3 rounded clearfix background-color-${theme}`} onSubmit={handleSubmit(onSubmit)}>
             <form id="addTodoForm">
                 <div className="mb-3 mt-3">
                     <label className="form-label">Title</label>
@@ -133,7 +134,7 @@ const TodoForm = (props) => {
                     <textarea className="form-control" rows="2" id="comment" name="comment" ></textarea>
                 </div>
             
-                <button type="submit" className="btn btn-primary mb-3 float-md-end" id="reg-Todo-Btn">Add Todo</button>
+                <button type="submit" className={`btn btn-${theme} mb-3 float-md-end`} id="reg-Todo-Btn">Add Todo</button>
             </form>
         </div>
     );

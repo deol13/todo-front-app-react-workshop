@@ -1,6 +1,10 @@
-.page-background {
+.page-background-light {
+  background-color: #283618;
+}
+.page-background-dark {
   background-color: #064789;
 }
+
 
 .form-card-background {
     background-color: #427AA1;

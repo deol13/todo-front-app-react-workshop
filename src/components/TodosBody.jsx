@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './Todos.css'
 import Todos from './Todos'
 import TodoForm from './TodoForm'
+import { useTheme } from './ThemeContxt';
 
 const todoTestData = [
     {id: 0, title: "Example1", description: "Description of example1", dueDate: "2025-08-15", assignToPerson: "Dennis Olsen", attachments: [], created: "2025-07-29", status: "ongoing"},
@@ -13,6 +14,7 @@ const status = [{id: 0, status: "unbegun"}, {id: 1, status: "ongoing"}, {id: 2, 
 
 const TodosBody = () => {
     const [todoData, setTodoData] = useState(todoTestData);
+    const { theme } = useTheme();
 
     const addCards = (data) => {
         const totalTodos = todoData.length;
@@ -43,7 +45,7 @@ const TodosBody = () => {
     return (
         <>
         <TodoForm func={addCards}/>
-        <div className="container mt-3 card" id="cardDiv">
+        <div className={`container mt-3 card`} id="cardDiv">
             <div className="card-header bg-white">
                 <div className="btn-toolbar justify-content-between" role="toolbar">
                     <h5 className="pt-1">Todos</h5>
